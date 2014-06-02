@@ -1,0 +1,8 @@
+########
+## COPY THIS FILE TO /etc/cron.d and modify.
+########
+
+# Web_Visualization_Tool
+
+# Backup Daily
+06 00   * * *   root    /opt/CheckPoint/Web_Visualization_Tool/launcher.pl -c /opt/CheckPoint/Web_Visualization_Tool/configurations/example.ini

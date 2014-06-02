@@ -1,0 +1,9 @@
+########
+## COPY THIS FILE TO /etc/cron.d and modify.
+########
+
+# m h dom mon dow user  command
+##################################
+
+# Example Report
+00 01   * * *   root          /usr/bin/perl /opt/NSOC/F5_Networks/F5_LTM_Export.pl --configuration /opt/NSOC/F5_Networks/configurations/example.ini --verbose
