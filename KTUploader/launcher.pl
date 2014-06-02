@@ -1,7 +1,5 @@
 #!/usr/bin/perl -w
 
-# $Id$
-
 use strict;
 use warnings;
 use Getopt::Long;
@@ -178,13 +176,13 @@ sub launch {
 # Check If arguments are present
 if ( @ARGV > 0 ) {
   # Parse Arguments
-  GetOptions(   
+  GetOptions(
     "c|configuration=s" => \$configuration_file,
     "version" => \&show_version,
     "v|verbose" => \$verbose,
     "q|quiet" => sub { $verbose = 0 },
     "man" => \$show_man,
-    "h|help|?" => \$show_help 
+    "h|help|?" => \$show_help
   )
   # Show usage if no argument match
   or pod2usage({-message => "Argument unknown\n", -exitval => 1});
@@ -222,7 +220,7 @@ Script written by Marc GUYARD for Orange AIS <m.guyard@orange.com>.
 
 =head1 SYNOPSIS
 
-B<launcher.pl> 
+B<launcher.pl>
 
   Options:
     --configuration

@@ -1,7 +1,5 @@
 #!/usr/bin/perl -w
 
-# $Id: Radware-ConfigParser.pl 92 2013-02-12 18:59:31Z marc@mguyard.com $
-
 use strict;
 use warnings;
 use Getopt::Long;
@@ -146,7 +144,7 @@ sub search_website() {
 # Check If arguments are present
 if ( @ARGV > 0 ) {
 	# Parse Arguments
-	GetOptions( 	
+	GetOptions(
 		"c|config=s" => \$configfile,
 		"s|search=s" => \$search_site,
 		"p|parse-config" => \$parse_config,
@@ -154,7 +152,7 @@ if ( @ARGV > 0 ) {
 		"v|verbose" => \$verbose,
 		"q|quiet" => sub { $verbose = 0 },
 		"man" => \$show_man,
-		"h|help|?" => \$show_help 
+		"h|help|?" => \$show_help
 	)
 	# Show usage if no argument match
 	or pod2usage({-message => "Argument unknown\n", -exitval => 1});
@@ -174,7 +172,7 @@ if ($parse_config) {
 	print $config_clean;
 } elsif ($search_site) {
 	&search_website($config_clean,$search_site);
-	#print $config_clean if $verbose;	
+	#print $config_clean if $verbose;
 }
 
 
@@ -194,7 +192,7 @@ Script written by Marc GUYARD for Orange AIS <m.guyard@orange.com>.
 
 =head1 SYNOPSIS
 
-B<ABT.pl> 
+B<ABT.pl>
 
 	Options:
 		--config <configuration_file>

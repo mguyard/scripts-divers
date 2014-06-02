@@ -1,7 +1,5 @@
 #!/usr/bin/perl -w
 
-# $Id: Radware-ConfigExport.pl 128 2013-08-26 15:28:46Z marc@mguyard.com $
-
 use strict;
 use warnings;
 use Getopt::Long;
@@ -125,7 +123,7 @@ sub generate_global_export() {
 # Check If arguments are present
 if ( @ARGV > 0 ) {
 	# Parse Arguments
-	GetOptions( 	
+	GetOptions(
 		"c|config=s" => \$configfile,
 		"d|directory=s" => \$directory,
 		"version" => \&show_version,
@@ -171,7 +169,7 @@ Script written by Marc GUYARD for Orange AIS <m.guyard@orange.com>.
 
 =head1 SYNOPSIS
 
-B<ABT.pl> 
+B<ABT.pl>
 
 	Options:
 		--config <configuration_file>
@@ -196,9 +194,9 @@ B<ABT.pl>
 =item B<--config>
 
 Read configuration file specify in argument to generate export.
- 
+
 =item B<--directory>
- 
+
 Read directory to find the last configuration file and use it to generate export.
 
 =item B<--version>

@@ -1,7 +1,5 @@
 #!/usr/bin/perl -w
 
-# $Id$
-
 use strict;
 use warnings;
 use Getopt::Long;
@@ -45,7 +43,7 @@ WHERE ticket.customer_id = ? AND ticket.ticket_state_id IN (2,3,7,8,12,13) AND t
    AND ticket.responsible_user_id = users.id AND ticket.type_id = ticket_type.id;";
 my $sql_request_actionticket = "
 SELECT article.id AS LastActionID, article.a_body AS LastAction, article.create_time AS LastActionDate
-FROM article 
+FROM article
 WHERE article_type_id = '12' and ticket_id = ? ORDER BY id DESC limit 1;
 ";
 my $sql_request_ticket_count = "
@@ -211,7 +209,7 @@ sub excel_generation {
 			$col = $col+1;
 		}
 		$col = 0;
-		$worksheet_incident_open->write_row( 0, 0, $headers_ref_open, $format_header );	
+		$worksheet_incident_open->write_row( 0, 0, $headers_ref_open, $format_header );
 		$row = $row+1;
 		foreach my $tickets_id ( sort { $a <=> $b } keys %{$Tickets_Incidents_Ouverts} ) {
 			my $last_action = &mysql_select_row($sql_request_actionticket, $Tickets_Incidents_Ouverts->{$tickets_id}->{id});
@@ -246,7 +244,7 @@ sub excel_generation {
 			$col = $col+1;
 		}
 		$col = 0;
-		$worksheet_incident_close->write_row( 0, 0, $headers_ref_close, $format_header );	
+		$worksheet_incident_close->write_row( 0, 0, $headers_ref_close, $format_header );
 		$row = $row+1;
 		foreach my $tickets_id ( sort { $a <=> $b } keys %{$Tickets_Incidents_Clos} ) {
 			my $last_action = &mysql_select_row($sql_request_actionticket, $Tickets_Incidents_Clos->{$tickets_id}->{id});
@@ -386,7 +384,7 @@ sub excel_generation {
 		$col = $row = 0;
 		$worksheet_ticket_count->write($row, $col, "Type de changement", $format_header );
 		$worksheet_ticket_count->write($row, $col+1, "IMAC consommés (depuis le début du contrat)", $format_header );
-		$worksheet_ticket_count->write($row, $col+2, "Nombre d'IMAC restant", $format_header );		
+		$worksheet_ticket_count->write($row, $col+2, "Nombre d'IMAC restant", $format_header );
 		$worksheet_ticket_count->write($row, $col+3, "Nombre d'IMAC au marché", $format_header );
 		$worksheet_ticket_count->set_column($col, $col, '35');
 		$worksheet_ticket_count->set_column($col+1, $col+3, '17');
@@ -422,7 +420,7 @@ sub excel_generation {
         ],
     );
     # Add a title.
-    $chart_change_minor->set_title( 
+    $chart_change_minor->set_title(
         name => 'IMAC Mineurs Consommés',
         name_font => {
         	color => '#FF7900',
@@ -449,7 +447,7 @@ sub excel_generation {
         ],
     );
     # Add a title.
-    $chart_change_major->set_title( 
+    $chart_change_major->set_title(
         name => 'IMAC Majeurs Consommés',
         name_font => {
         	color => '#FF7900',
@@ -466,7 +464,7 @@ sub excel_generation {
 	my @UNDETERMINED = split(/;/, $UNDETERMINED);
 	my $worksheet_supervision = $workbook->add_worksheet( 'Supervision' );
 	$worksheet_supervision->set_column(0, 2, "40");
-	$worksheet_supervision->write_row( 0, 0, $headers_supervision, $format_header );	
+	$worksheet_supervision->write_row( 0, 0, $headers_supervision, $format_header );
 	$worksheet_supervision->write(1, 0, "UP", $format_content );
 	$worksheet_supervision->write(1, 1, $UP[1], $format_content );
 	$worksheet_supervision->write(1, 2, $UP[3], $format_content );
@@ -502,7 +500,7 @@ sub excel_generation {
         ],
     );
     # Add a title.
-    $chart_supervision->set_title( 
+    $chart_supervision->set_title(
         name => 'Supervision',
         name_font => {
         	color => '#FF7900',
@@ -537,7 +535,7 @@ sub centreon_stats {
 	my $SID;
 	my ($DOWN,$UP,$UNREACHABLE,$UNDETERMINED);
 	print "Login : ".$username." / Password : ".$password."\n";
-	my $mech = WWW::Mechanize->new( 
+	my $mech = WWW::Mechanize->new(
 		agent => 'OTRS Report' ,
 		autocheck => 1
 	);
@@ -641,13 +639,13 @@ sub mysql_select_count_ticket {
 # Check If arguments are present
 if ( @ARGV > 0 ) {
   # Parse Arguments
-  GetOptions(   
+  GetOptions(
     "c|configuration=s" => \$configuration_file,
     "version" => \&show_version,
     "v|verbose" => \$verbose,
     "q|quiet" => sub { $verbose = 0 },
     "man" => \$show_man,
-    "h|help|?" => \$show_help 
+    "h|help|?" => \$show_help
   )
   # Show usage if no argument match
   or pod2usage({-message => "Argument unknown\n", -exitval => 1});
@@ -685,7 +683,7 @@ Script written by Marc GUYARD for Orange AIS <m.guyard@orange.com>.
 
 =head1 SYNOPSIS
 
-B<ABT.pl> 
+B<ABT.pl>
 
   Options:
     --configuration
